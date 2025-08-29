@@ -22,12 +22,12 @@ app.route("/employees/:id").get((req, res) => {
   const { id } = req.params;
   console.log(!isNaN(id));
   if (isNaN(id)) {
-    return res.status(400).send("ID Needs To Be A Number");
+    return res.status(404).send("ID Needs To Be A Number");
   }
 
   if (id > employees.length - 1) {
-    return res.status(400).send("Employee not found");
+    return res.status(404).send("Employee not found");
   }
 
-  res.send(employees[id]);
+  res.send(employees[id - 1]);
 });
